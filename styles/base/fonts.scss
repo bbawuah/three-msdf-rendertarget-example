@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'Neutral Face';
+  src: url('../fonts/NeutralFace.woff') format('woff'),
+    url('../fonts/NeutralFace.otf') format('opentype'),
+    url('../fonts/NeutralFace.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neutral Face';
+  src: url('../fonts/NeutralFace-Bold.woff') format('woff'),
+    url('../fonts/NeutralFace-Bold.otf') format('opentype'),
+    url('../fonts/NeutralFace-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Horizon Outlined';
+  src: url('../fonts/horizon_outlined.woff') format('woff'),
+    url('../fonts/horizon_outlined.otf') format('opentype'),
+    url('../fonts/horizon_outlined.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Horizon';
+  src: url('../fonts/horizon.woff') format('woff'),
+    url('../fonts/horizon.otf') format('opentype'),
+    url('../fonts/horizon.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
