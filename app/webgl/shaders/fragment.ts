@@ -1,5 +1,6 @@
 export const fragmentShader = `precision mediump float;
 uniform sampler2D u_texture;
+uniform sampler2D u_texture1;
 uniform float u_time;
 uniform vec3 u_spotLightColor;
 uniform float u_lightIntensity;
@@ -28,7 +29,8 @@ void main() {
   light_value *= u_lightIntensity;
 
   vec3 texture = texture2D(u_texture, uv).rgb * light_value;
+  vec3 colorMask = texture2D(u_texture1, uv).rgb;
 
-  gl_FragColor = vec4(texture, 1.);
+  gl_FragColor = vec4(texture, colorMask.r);
 }
 `;

@@ -1,6 +1,7 @@
 import * as THREE from 'three';
-import { Font, FontLoader } from 'three/examples/jsm/loaders/FontLoader';
+import { Font } from 'three/examples/jsm/loaders/FontLoader';
 import Stats from 'stats.js';
+import { isMobile } from 'mobile-device-detect';
 import loadFont from 'load-bmfont';
 import { vertexShader } from './shaders/vertex';
 import { MSDFTextGeometry, MSDFTextMaterial } from 'three-msdf-text';
@@ -166,11 +167,13 @@ export class Canvas {
 
     this.renderTargetCamera = new THREE.PerspectiveCamera(
       75,
-      window.innerWidth / window.innerHeight,
+      isMobile
+        ? window.innerHeight / window.innerWidth
+        : window.innerWidth / window.innerHeight,
       0.1,
       10000
     );
-    this.renderTargetCamera.position.z = 375;
+    this.renderTargetCamera.position.z = 450;
 
     this.renderTargetScene = new THREE.Scene();
 
@@ -184,10 +187,11 @@ export class Canvas {
     this.renderTargetMaterial = new THREE.RawShaderMaterial({
       vertexShader,
       fragmentShader,
-      side: THREE.FrontSide,
+      side: THREE.DoubleSide,
       uniforms: {
         u_time: new THREE.Uniform(0),
         u_texture: new THREE.Uniform(texture),
+        u_texture1: new THREE.Uniform(texture),
         u_lightPos: {
           value: new THREE.Vector3(0).copy(this.spotLight.position)
         },
@@ -195,7 +199,7 @@ export class Canvas {
           value: new THREE.Color(0xffffff)
         },
         u_lightIntensity: {
-          value: 0.875
+          value: 0.6
         }
       },
       transparent: true
